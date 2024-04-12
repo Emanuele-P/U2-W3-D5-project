@@ -21,6 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   if (id) {
     subtitle.innerText = '- Edit product card'
+    subtitle.classList.add('text-warning')
     // Edit-submit button
     btnSubmit.classList.remove('btn-success')
     btnSubmit.classList.add('btn-info')
@@ -54,6 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
       .catch((error) => console.log(error))
   } else {
     subtitle.innerText = '- Create product card'
+    subtitle.classList.add('text-success')
   }
 })
 
@@ -87,22 +89,23 @@ const handleSubmit = (event) => {
     })
     .then((createdCard) => {
       if (id) {
-        alert(
-          'The product with id: ' +
-            createdCard._id +
-            ' ' +
-            'edited successfully!'
+        showAlert(
+          'Product: ' + createdCard.name + ' ' + 'edited successfully!',
+          'warning'
         )
-        window.location.href = 'index.html'
       } else {
-        alert(
-          'The product with id: ' +
-            createdCard._id +
+        showAlert(
+          'Product with id: ' +
+            createdCard.name +
             ' ' +
-            'created successfully!'
+            'created successfully!',
+          'info'
         )
 
-        form.reset()
+        console.log('Attempting to redirect to index.html')
+        setTimeout(() => {
+          window.location.href = './index.html'
+        }, 3000)
       }
     })
     .catch((error) => {
@@ -129,8 +132,10 @@ const handleDelete = () => {
         }
       })
       .then((deletedObj) => {
-        alert('Product deleted successfully!')
-        window.location.reload()
+        showAlert('Product deleted successfully!', 'danger')
+        setTimeout(() => {
+          window.location.reload()
+        }, 3000)
       })
       .catch((error) => {
         console.error('Error:', error)
@@ -143,4 +148,17 @@ const handleReset = function (event) {
   if (confirm('Are you sure you want to reset the form?')) {
     document.querySelector('form').reset()
   }
+}
+
+//handle alerts
+const showAlert = function (message, type) {
+  const alertContainer = document.getElementById('alertContainer')
+  alertContainer.innerHTML = `<div class="alert alert-${type} alert-dismissible fade show" role="alert">
+    <strong>${message}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>`
+
+  setTimeout(() => {
+    alertContainer.innerHTML = ''
+  }, 4000)
 }

@@ -57,8 +57,8 @@ window.addEventListener('DOMContentLoaded', () => {
           row.appendChild(col)
           //handle modal
           const imgElement = card.querySelector('.card-img-top')
-          imgElement.addEventListener('click', (e) => {
-            e.preventDefault()
+          imgElement.addEventListener('click', (event) => {
+            event.preventDefault()
             modalImage.src = imgElement.src
             document.querySelector(
               '.modal-title'

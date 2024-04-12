@@ -13,7 +13,10 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-success">
         <div class="container">
-            <a class="navbar-brand text-light" href="#">CRUDAZON</a>
+            <a href="./index.html" style="text-decoration: none; color: inherit;">
+                <img src="assets/logo.png" alt="logo" style="height: 50px;">
+                <span class="navbar-brand text-light">E-COMMERCE</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -33,10 +36,15 @@
         </div>
     </nav>
 
-    <div class="container">
+
+
+    <div class=" container">
+
+
         <div class="row justify-content-center">
             <div class="col-md-8 mt-5">
-                <div class="d-flex align-items-center">
+                <div id="alertContainer"></div>
+                <div class="d-flex align-items-center mt-5">
                     <h2 class="mb-0">Backoffice</h2>
                     <h5 id="subtitle" class="mb-0 ms-2"></h5>
                 </div>
@@ -65,7 +73,8 @@
                     </div>
 
                     <div class="d-flex justify-content-start gap-3">
-                        <button type="submit" class="mt-2 btn btn-success btn-submit">Create new product card</button>
+                        <button type="submit" class="mt-2 btn btn-success btn-submit">Create new product
+                            card</button>
                         <button type="button" class="mt-2  btn btn-secondary reset-btn">
                             RESET
                         </button>
