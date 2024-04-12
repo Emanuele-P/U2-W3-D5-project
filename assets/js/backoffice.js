@@ -6,7 +6,7 @@ const URL = id
 console.log(id)
 const method = id ? 'PUT' : 'POST'
 const API_KEY =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjE4ZWFkNzdmMzA0NjAwMWFlNTlmNmIiLCJpYXQiOjE3MTI5MDkwMTUsImV4cCI6MTcxNDExODYxNX0.LP9zpeUjfidl9ROWGcDWLnMCmcIDLELQpRr6CCnYc8g'
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjE4ZWFkNzdmMzA0NjAwMWFlNTlmNmIiLCJpYXQiOjE3MTI5MzExNjAsImV4cCI6MTcxNDE0MDc2MH0.GsIIgdW_e9EeSBNg9B-2iqCdOQHDOvTYiemtaBi51Tw'
 
 window.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form')
@@ -29,7 +29,12 @@ window.addEventListener('DOMContentLoaded', () => {
     deleteBtn.addEventListener('click', handleDelete)
     deleteBtn.classList.remove('d-none')
 
-    fetch(URL)
+    fetch(URL, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: API_KEY,
+      },
+    })
       .then((response) => {
         if (response.ok) {
           return response.json()
@@ -108,7 +113,13 @@ const handleDelete = () => {
   const confirmed = confirm('Do you want to delete this product card?')
 
   if (confirmed) {
-    fetch(URL, { method: 'DELETE' })
+    fetch(URL, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: API_KEY,
+      },
+    })
       .then((response) => {
         if (response.ok) {
           return response.json()
@@ -117,7 +128,7 @@ const handleDelete = () => {
         }
       })
       .then((deletedObj) => {
-        alert('Product: ' + deletedObj.name + ' ' + 'deleted successfully!')
+        alert('Product deleted successfully!')
         window.location.reload()
       })
       .catch((error) => {

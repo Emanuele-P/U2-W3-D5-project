@@ -2,7 +2,7 @@ const params = new URLSearchParams(window.location.search)
 const id = params.get('id')
 const URL = 'https://striveschool-api.herokuapp.com/api/product/'
 const API_KEY =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjE4ZWFkNzdmMzA0NjAwMWFlNTlmNmIiLCJpYXQiOjE3MTI5MDkwMTUsImV4cCI6MTcxNDExODYxNX0.LP9zpeUjfidl9ROWGcDWLnMCmcIDLELQpRr6CCnYc8g'
+  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjE4ZWFkNzdmMzA0NjAwMWFlNTlmNmIiLCJpYXQiOjE3MTI5MzExNjAsImV4cCI6MTcxNDE0MDc2MH0.GsIIgdW_e9EeSBNg9B-2iqCdOQHDOvTYiemtaBi51Tw'
 
 const row = document.getElementById('card-row')
 
