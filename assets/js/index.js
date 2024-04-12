@@ -60,6 +60,9 @@ window.addEventListener('DOMContentLoaded', () => {
           imgElement.addEventListener('click', (e) => {
             e.preventDefault()
             modalImage.src = imgElement.src
+            document.querySelector(
+              '.modal-title'
+            ).innerText = `${product.brand} ${product.name}`
             imageModal.show()
           })
         })
