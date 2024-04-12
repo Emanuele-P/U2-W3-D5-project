@@ -46,10 +46,8 @@ const displayProductDetails = function (product) {
                 <h5 class="card-title">${product.name}</h5>
                 <p class="card-text">Model: ${product.description}</p>
                 <h4 class="card-price fw-bold text-danger">${product.price} €</h4><br>
-                <small class="text-muted font-monospace">id:${product._id}</small>
-                <button type="button" class="mt-3 btn btn-sm btn-outline-secondary d-block">
-                      Edit
-                    </button>
+                <small class="text-muted font-monospace d-block">id:${product._id}</small>
+                <a href="./backoffice.html?id=${product._id}" class="btn btn-sm btn-outline-secondary mt-3">Edit</a>
             </div>
             
         </div>
