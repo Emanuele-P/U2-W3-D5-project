@@ -14,7 +14,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
   const btnSubmit = document.querySelector('.btn-submit')
   const deleteBtn = document.querySelector('.del-btn')
+  const resetBtn = document.querySelector('.reset-btn')
   const subtitle = document.getElementById('subtitle')
+
+  resetBtn.addEventListener('click', handleReset)
 
   if (id) {
     subtitle.innerText = '- Edit product card'
@@ -120,5 +123,12 @@ const handleDelete = () => {
       .catch((error) => {
         console.error('Error:', error)
       })
+  }
+}
+
+const handleReset = function (event) {
+  event.preventDefault()
+  if (confirm('Are you sure you want to reset the form?')) {
+    document.querySelector('form').reset()
   }
 }

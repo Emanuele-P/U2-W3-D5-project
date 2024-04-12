@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         newProductCard.forEach((product) => {
           const col = document.createElement('div')
-          col.classList.add('col-md-4', 'd-flex')
+          col.classList.add('col-md-6', 'col-lg-4', 'd-flex')
 
           const card = document.createElement('div')
           card.classList.add(
@@ -44,7 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
           card.innerHTML = `
           <a href="details.html?id=${product._id}" class="card-img-container d-block" style="height: 200px; overflow: hidden;">
-              <img src="${product.imageUrl}" class="card-img-top p-3" style="object-fit: fill;">
+              <img src="${product.imageUrl}" class="card-img-top p-3" style="object-fit: cover;">
           </a>
           <div class="card-body d-flex flex-column">
               <h5 class="card-title">${product.brand} ${product.name}</h5>

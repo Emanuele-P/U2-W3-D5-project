@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
 const displayProductDetails = function (product) {
   row.innerHTML = `
         <div class="card mb-4 py-5 shadow-sm d-flex flex-row">
-            <div class="col-md-6">
+            <div class="col-md-6 p-3">
                 <img src="${product.imageUrl}" class="img-fluid">
             </div>
             <div class="card-body col-md-6">
