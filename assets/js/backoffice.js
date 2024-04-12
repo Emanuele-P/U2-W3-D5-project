@@ -93,6 +93,7 @@ const handleSubmit = (event) => {
             ' ' +
             'edited successfully!'
         )
+        window.location.href = 'index.html'
       } else {
         alert(
           'The product with id: ' +

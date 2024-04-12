@@ -1,13 +1,15 @@
 window.addEventListener('DOMContentLoaded', () => {
-  //set up url and api
-  const loadCards = function () {
-    const URL = 'https://striveschool-api.herokuapp.com/api/product/'
-    const API_KEY =
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjE4ZWFkNzdmMzA0NjAwMWFlNTlmNmIiLCJpYXQiOjE3MTI5MzExNjAsImV4cCI6MTcxNDE0MDc2MH0.GsIIgdW_e9EeSBNg9B-2iqCdOQHDOvTYiemtaBi51Tw'
-    const row = document.getElementById('card-row')
+  //handle api
+  const URL = 'https://striveschool-api.herokuapp.com/api/product/'
+  const API_KEY =
+    'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjE4ZWFkNzdmMzA0NjAwMWFlNTlmNmIiLCJpYXQiOjE3MTI5MzExNjAsImV4cCI6MTcxNDE0MDc2MH0.GsIIgdW_e9EeSBNg9B-2iqCdOQHDOvTYiemtaBi51Tw'
+  const row = document.getElementById('card-row')
+  const modalImage = document.getElementById('modalImage')
+  const imageModal = new bootstrap.Modal(document.getElementById('imageModal'))
 
+  //get
+  const loadCards = function () {
     fetch(URL, {
-      body: JSON.stringify(),
       headers: {
         'Content-Type': 'application/json',
         Authorization: API_KEY,
@@ -22,11 +24,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
       })
       .then((newProductCard) => {
-        console.log(newProductCard)
-
-        row.innerHTML = '' //clear webpage
-
-        //generate cards
+        row.innerHTML = '' // Clear webpage
 
         newProductCard.forEach((product) => {
           const col = document.createElement('div')
@@ -41,24 +39,29 @@ window.addEventListener('DOMContentLoaded', () => {
             'd-flex',
             'flex-column'
           )
-
+          //generate cards
           card.innerHTML = `
-          <a href="details.html?id=${product._id}" class="card-img-container d-block" style="height: 200px; overflow: hidden;">
-              <img src="${product.imageUrl}" class="card-img-top p-3" style="object-fit: cover;">
+          <a href="#" class="card-img-container d-block" style="height: 200px; overflow: hidden;">
+            <img src="${product.imageUrl}" class="card-img-top p-3" style="object-fit: cover;">
           </a>
           <div class="card-body d-flex flex-column">
-              <h5 class="card-title">${product.brand} ${product.name}</h5>
-              <p class="card-text">${product.description}</p>
-              <p class="card-price text-danger fw-bold">${product.price} €</p>
-              <div class="mt-auto">
-                  <a href="./detail.html?id=${product._id}" class="btn btn-sm btn-outline-secondary">View Product</a>
-              </div>
+            <h5 class="card-title">${product.brand} ${product.name}</h5>
+            <p class="card-text">${product.description}</p>
+            <p class="card-price text-danger fw-bold">${product.price} €</p>
+            <div class="mt-auto">
+                <a href="./detail.html?id=${product._id}" class="btn btn-sm btn-outline-secondary">View Product</a>
+            </div>
           </div>`
 
           col.appendChild(card)
           row.appendChild(col)
-
-          //view button you should add a detail page #href
+          //handle modal
+          const imgElement = card.querySelector('.card-img-top')
+          imgElement.addEventListener('click', (e) => {
+            e.preventDefault()
+            modalImage.src = imgElement.src
+            imageModal.show()
+          })
         })
       })
       .catch((error) => {
